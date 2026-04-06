@@ -408,9 +408,8 @@ export function connect<T extends PropTypes>(
 
     getRootProps() {
       return normalize.element({
-        ...parts.root.attrs,
+        ...parts.root.attrs(scope.id),
         dir: prop("dir"),
-        id: dom.getRootId(scope),
         "data-state": open ? "open" : "closed",
         "data-disabled": dataAttr(disabled),
         "data-readonly": dataAttr(readOnly),
@@ -421,7 +420,7 @@ export function connect<T extends PropTypes>(
     getLabelProps(props = {}) {
       const { index = 0 } = props
       return normalize.label({
-        ...parts.label.attrs,
+        ...parts.label.attrs(scope.id),
         id: dom.getLabelId(scope, index),
         dir: prop("dir"),
         htmlFor: dom.getInputId(scope, index),
@@ -434,9 +433,8 @@ export function connect<T extends PropTypes>(
 
     getControlProps() {
       return normalize.element({
-        ...parts.control.attrs,
+        ...parts.control.attrs(scope.id),
         dir: prop("dir"),
-        id: dom.getControlId(scope),
         "data-disabled": dataAttr(disabled),
         "data-placeholder-shown": dataAttr(empty),
       })
@@ -444,14 +442,14 @@ export function connect<T extends PropTypes>(
 
     getRangeTextProps() {
       return normalize.element({
-        ...parts.rangeText.attrs,
+        ...parts.rangeText.attrs(scope.id),
         dir: prop("dir"),
       })
     },
 
     getContentProps() {
       return normalize.element({
-        ...parts.content.attrs,
+        ...parts.content.attrs(scope.id),
         hidden: !open,
         dir: prop("dir"),
         "data-state": open ? "open" : "closed",
@@ -469,7 +467,7 @@ export function connect<T extends PropTypes>(
       const { view = "day", columns = view === "day" ? 7 : 4 } = props
       const uid = getTableId(props)
       return normalize.element({
-        ...parts.table.attrs,
+        ...parts.table.attrs(scope.id),
         role: "grid",
         "data-columns": columns,
         "aria-roledescription": getRoleDescription(view),
@@ -550,7 +548,7 @@ export function connect<T extends PropTypes>(
     getTableHeadProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.tableHead.attrs,
+        ...parts.tableHead.attrs(scope.id),
         "aria-hidden": true,
         dir: prop("dir"),
         "data-view": view,
@@ -561,7 +559,7 @@ export function connect<T extends PropTypes>(
     getTableHeaderProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.tableHeader.attrs,
+        ...parts.tableHeader.attrs(scope.id),
         dir: prop("dir"),
         "data-view": view,
         "data-disabled": dataAttr(disabled),
@@ -571,7 +569,7 @@ export function connect<T extends PropTypes>(
     getTableBodyProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.tableBody.attrs,
+        ...parts.tableBody.attrs(scope.id),
         "data-view": view,
         "data-disabled": dataAttr(disabled),
       })
@@ -580,7 +578,7 @@ export function connect<T extends PropTypes>(
     getTableRowProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.tableRow.attrs,
+        ...parts.tableRow.attrs(scope.id),
         "aria-disabled": ariaAttr(disabled),
         "data-disabled": dataAttr(disabled),
         "data-view": view,
@@ -590,7 +588,7 @@ export function connect<T extends PropTypes>(
     getWeekNumberHeaderCellProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.tableCell.attrs,
+        ...parts.tableCell.attrs(scope.id),
         scope: "col",
         "aria-label": translations.weekColumnHeader,
         "data-view": view,
@@ -603,7 +601,7 @@ export function connect<T extends PropTypes>(
       const { weekIndex, week } = props
       const weekNumber = week[0] ? getWeekOfYear(week[0], locale) : 0
       return normalize.element({
-        ...parts.tableCell.attrs,
+        ...parts.tableCell.attrs(scope.id),
         role: "rowheader",
         "aria-label": translations.weekNumberCell?.(weekNumber),
         "data-view": "day",
@@ -619,7 +617,7 @@ export function connect<T extends PropTypes>(
       const { value } = props
       const cellState = getDayTableCellState(props)
       return normalize.element({
-        ...parts.tableCell.attrs,
+        ...parts.tableCell.attrs(scope.id),
         role: "gridcell",
         "aria-disabled": ariaAttr(!cellState.selectable),
         "aria-selected": cellState.selected || cellState.inRange,
@@ -633,7 +631,7 @@ export function connect<T extends PropTypes>(
       const { value } = props
       const cellState = getDayTableCellState(props)
       return normalize.element({
-        ...parts.tableCellTrigger.attrs,
+        ...parts.tableCellTrigger.attrs(scope.id),
         id: dom.getCellTriggerId(scope, value.toString()),
         role: "button",
         dir: prop("dir"),
@@ -679,7 +677,7 @@ export function connect<T extends PropTypes>(
       const { value, columns } = props
       const cellState = getMonthTableCellState(props)
       return normalize.element({
-        ...parts.tableCell.attrs,
+        ...parts.tableCell.attrs(scope.id),
         dir: prop("dir"),
         colSpan: columns,
         role: "gridcell",
@@ -694,7 +692,7 @@ export function connect<T extends PropTypes>(
       const { value } = props
       const cellState = getMonthTableCellState(props)
       return normalize.element({
-        ...parts.tableCellTrigger.attrs,
+        ...parts.tableCellTrigger.attrs(scope.id),
         id: dom.getCellTriggerId(scope, value.toString()),
         role: "button",
         dir: prop("dir"),
@@ -736,7 +734,7 @@ export function connect<T extends PropTypes>(
       const { value, columns } = props
       const cellState = getYearTableCellState(props)
       return normalize.element({
-        ...parts.tableCell.attrs,
+        ...parts.tableCell.attrs(scope.id),
         dir: prop("dir"),
         colSpan: columns,
         role: "gridcell",
@@ -751,7 +749,7 @@ export function connect<T extends PropTypes>(
       const { value } = props
       const cellState = getYearTableCellState(props)
       return normalize.element({
-        ...parts.tableCellTrigger.attrs,
+        ...parts.tableCellTrigger.attrs(scope.id),
         id: dom.getCellTriggerId(scope, value.toString()),
         role: "button",
         dir: prop("dir"),
@@ -791,7 +789,7 @@ export function connect<T extends PropTypes>(
       const { view = "day" } = props
       const isDisabled = disabled || !computed("isNextVisibleRangeValid")
       return normalize.button({
-        ...parts.nextTrigger.attrs,
+        ...parts.nextTrigger.attrs(scope.id),
         dir: prop("dir"),
         id: dom.getNextTriggerId(scope, view),
         type: "button",
@@ -809,7 +807,7 @@ export function connect<T extends PropTypes>(
       const { view = "day" } = props
       const isDisabled = disabled || !computed("isPrevVisibleRangeValid")
       return normalize.button({
-        ...parts.prevTrigger.attrs,
+        ...parts.prevTrigger.attrs(scope.id),
         dir: prop("dir"),
         id: dom.getPrevTriggerId(scope, view),
         type: "button",
@@ -825,8 +823,7 @@ export function connect<T extends PropTypes>(
 
     getClearTriggerProps() {
       return normalize.button({
-        ...parts.clearTrigger.attrs,
-        id: dom.getClearTriggerId(scope),
+        ...parts.clearTrigger.attrs(scope.id),
         dir: prop("dir"),
         type: "button",
         "aria-label": translations.clearTrigger,
@@ -840,7 +837,7 @@ export function connect<T extends PropTypes>(
 
     getTriggerProps() {
       return normalize.button({
-        ...parts.trigger.attrs,
+        ...parts.trigger.attrs(scope.id),
         id: dom.getTriggerId(scope),
         dir: prop("dir"),
         type: "button",
@@ -862,7 +859,7 @@ export function connect<T extends PropTypes>(
     getViewProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.view.attrs,
+        ...parts.view.attrs(scope.id),
         "data-view": view,
         hidden: context.get("view") !== view,
       })
@@ -871,7 +868,7 @@ export function connect<T extends PropTypes>(
     getViewTriggerProps(props = {}) {
       const { view = "day" } = props
       return normalize.button({
-        ...parts.viewTrigger.attrs,
+        ...parts.viewTrigger.attrs(scope.id),
         "data-view": view,
         dir: prop("dir"),
         id: dom.getViewTriggerId(scope, view),
@@ -889,7 +886,7 @@ export function connect<T extends PropTypes>(
     getViewControlProps(props = {}) {
       const { view = "day" } = props
       return normalize.element({
-        ...parts.viewControl.attrs,
+        ...parts.viewControl.attrs(scope.id),
         "data-view": view,
         dir: prop("dir"),
       })
@@ -899,7 +896,7 @@ export function connect<T extends PropTypes>(
       const { index = 0, fixOnBlur = true } = props
 
       return normalize.input({
-        ...parts.input.attrs,
+        ...parts.input.attrs(scope.id),
         id: dom.getInputId(scope, index),
         autoComplete: "off",
         autoCorrect: "off",
@@ -963,7 +960,7 @@ export function connect<T extends PropTypes>(
 
     getMonthSelectProps() {
       return normalize.select({
-        ...parts.monthSelect.attrs,
+        ...parts.monthSelect.attrs(scope.id),
         id: dom.getMonthSelectId(scope),
         "aria-label": translations.monthSelect,
         disabled,
@@ -977,7 +974,7 @@ export function connect<T extends PropTypes>(
 
     getYearSelectProps() {
       return normalize.select({
-        ...parts.yearSelect.attrs,
+        ...parts.yearSelect.attrs(scope.id),
         id: dom.getYearSelectId(scope),
         disabled,
         "aria-label": translations.yearSelect,
@@ -991,8 +988,7 @@ export function connect<T extends PropTypes>(
 
     getPositionerProps() {
       return normalize.element({
-        id: dom.getPositionerId(scope),
-        ...parts.positioner.attrs,
+        ...parts.positioner.attrs(scope.id),
         dir: prop("dir"),
         style: popperStyles.floating,
       })
@@ -1002,7 +998,7 @@ export function connect<T extends PropTypes>(
       const value = Array.isArray(props.value) ? props.value : getDateRangePreset(props.value, locale, timeZone)
       const valueAsString = value.filter((item) => item != null).map((item) => item.toDate(timeZone).toDateString())
       return normalize.button({
-        ...parts.presetTrigger.attrs,
+        ...parts.presetTrigger.attrs(scope.id),
         "aria-label": translations.presetTrigger(valueAsString),
         type: "button",
         onClick(event) {
