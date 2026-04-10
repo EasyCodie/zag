@@ -1,5 +1,46 @@
 # @zag-js/floating-panel
 
+## 2.0.0-next.0
+
+### Minor Changes
+
+- [#3061](https://github.com/chakra-ui/zag/pull/3061)
+  [`1d14806`](https://github.com/chakra-ui/zag/commit/1d14806d53d0c6906c9fc8108ddd6127b9868719) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - Add shared resize/move engine to `@zag-js/rect-utils`.
+  Both floating panel and image cropper now delegate all constrained rect manipulation to this engine.
+
+  **New `@zag-js/rect-utils` exports:**
+  - `applyMove`, `applyResize` — pointer-driven move and resize with boundary, size limits, aspect ratio, grid snap, and
+    center-origin support
+  - `clampPointInRange`, `centerInRect`, `centerOnPoint` — point/rect positioning helpers
+  - `getDirectionDelta`, `getArrowKeyDelta`, `getKeyboardResizeDelta` — keyboard interaction helpers
+  - `getCenterPoint`, `getMidpoint`, `isVisibleSize`, `scaleRect`, `scaleSize`, `roundRect`, `ZERO_POINT` — general
+    rect/point utilities
+  - `isLeftHandle`, `isRightHandle`, `isTopHandle`, `isBottomHandle`, `isCornerHandle`, `isHorizontalHandle`,
+    `isVerticalHandle` — handle direction helpers
+  - `HandlePosition` type
+
+  **Breaking: Removed from `@zag-js/rect-utils`:**
+  - `resizeRect`, `AffineTransform`, `compassDirectionMap`, `oppositeDirectionMap`, `ScalingOptions`
+
+  **Breaking: Unified handle naming across floating panel and image cropper:**
+  - Floating panel: `ResizeTriggerProps.axis` → `.placement`, `data-axis` → `data-placement`, `ResizeTriggerAxis`
+    removed (use `HandlePosition`), `resizeTriggerAxes` → `resizeTriggerPlacements`
+  - Image cropper: `HandleProps.position` → `.placement`, `data-position` → `data-placement`, `handles` → `placements`
+
+### Patch Changes
+
+- Updated dependencies [[`3f9db62`](https://github.com/chakra-ui/zag/commit/3f9db62002a581ba2e948b289a633be76d66623b),
+  [`1d14806`](https://github.com/chakra-ui/zag/commit/1d14806d53d0c6906c9fc8108ddd6127b9868719)]:
+  - @zag-js/anatomy@2.0.0-next.0
+  - @zag-js/types@2.0.0-next.0
+  - @zag-js/rect-utils@2.0.0-next.0
+  - @zag-js/dom-query@2.0.0-next.0
+  - @zag-js/core@2.0.0-next.0
+  - @zag-js/popper@2.0.0-next.0
+  - @zag-js/store@2.0.0-next.0
+  - @zag-js/utils@2.0.0-next.0
+
 ## 1.39.1
 
 ### Patch Changes

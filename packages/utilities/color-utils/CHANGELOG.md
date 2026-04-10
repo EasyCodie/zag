@@ -1,5 +1,23 @@
 # @zag-js/color-utils
 
+## 2.0.0-next.0
+
+### Minor Changes
+
+- [`972a256`](https://github.com/chakra-ui/zag/commit/972a25612bba96c2300973c6cf7a2b05ffbc2e23) Thanks
+  [@segunadebayo](https://github.com/segunadebayo)! - Add OKLab and OKLCH as color formats with `in oklab` / `in oklch`
+  area and slider gradients, plus an optional sRGB gamut overlay for wide-gamut picking.
+
+  **Color picker API:** Use `getGamutOverlay(props?)` (replaces the removed `gamutOverlay` property) with the same props
+  as `getAreaProps` / `getGamutOverlayProps`. Adds `isInSrgbGamut` and optional `pixelRatio` on overlay props for
+  DPR-aware boundary sampling. See
+  [OSS-2393](https://linear.app/chakra/issue/OSS-2393/color-picker-wide-gamut-color-support-oklaboklch-srgb-gamut-overlay).
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @zag-js/utils@2.0.0-next.0
+
 ## 1.39.1
 
 ### Patch Changes

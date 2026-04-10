@@ -1,5 +1,37 @@
 # @zag-js/pin-input
 
+## 2.0.0-next.0
+
+### Major Changes
+
+- [#3061](https://github.com/chakra-ui/zag/pull/3061)
+  [`93ac7f1`](https://github.com/chakra-ui/zag/commit/93ac7f1b570c1dc3b31e666c4b5d4a07b0569395) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - **Breaking:** `count` is now a required prop.
+
+  The machine no longer infers the number of inputs by querying the DOM. Pass `count` explicitly.
+
+  ```diff
+    pinInput.machine({
+      id: "pin",
+  +   count: 4,
+    })
+  ```
+
+  ### Why
+  - **Predictable** — machine knows the count upfront without waiting for DOM to render
+  - **Simpler internals** — no DOM queries or mutation observers to detect input elements
+  - **SSR-friendly** — count is available before hydration
+  - **Consistent** — aligns with how carousel, rating, and pagination handle counts
+
+### Patch Changes
+
+- Updated dependencies [[`3f9db62`](https://github.com/chakra-ui/zag/commit/3f9db62002a581ba2e948b289a633be76d66623b)]:
+  - @zag-js/anatomy@2.0.0-next.0
+  - @zag-js/types@2.0.0-next.0
+  - @zag-js/dom-query@2.0.0-next.0
+  - @zag-js/core@2.0.0-next.0
+  - @zag-js/utils@2.0.0-next.0
+
 ## 1.39.1
 
 ### Patch Changes
