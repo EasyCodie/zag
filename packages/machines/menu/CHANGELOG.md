@@ -1,5 +1,20 @@
 # @zag-js/menu
 
+## 1.39.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @zag-js/anatomy@1.39.2
+  - @zag-js/core@1.39.2
+  - @zag-js/types@1.39.2
+  - @zag-js/utils@1.39.2
+  - @zag-js/dismissable@1.39.2
+  - @zag-js/dom-query@1.39.2
+  - @zag-js/focus-visible@1.39.2
+  - @zag-js/popper@1.39.2
+  - @zag-js/rect-utils@1.39.2
+
 ## 1.39.1
 
 ### Patch Changes

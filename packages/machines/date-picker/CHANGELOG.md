@@ -1,5 +1,27 @@
 # @zag-js/date-picker
 
+## 1.39.2
+
+### Patch Changes
+
+- [`00809cd`](https://github.com/chakra-ui/zag/commit/00809cd3adeb17d4c10efd5a91d87b903d13d05b) Thanks
+  [@segunadebayo](https://github.com/segunadebayo)! - Fix `isDateEqual` to consider time components of
+  `CalendarDateTime` and `ZonedDateTime` values.
+
+  This ensures `onValueChange` fires correctly when time segments change in the date input.
+
+- Updated dependencies [[`00809cd`](https://github.com/chakra-ui/zag/commit/00809cd3adeb17d4c10efd5a91d87b903d13d05b),
+  [`8181b98`](https://github.com/chakra-ui/zag/commit/8181b98c75305a037958eedf42cd13c95a6b439c)]:
+  - @zag-js/date-utils@1.39.2
+  - @zag-js/anatomy@1.39.2
+  - @zag-js/core@1.39.2
+  - @zag-js/types@1.39.2
+  - @zag-js/utils@1.39.2
+  - @zag-js/dismissable@1.39.2
+  - @zag-js/dom-query@1.39.2
+  - @zag-js/live-region@1.39.2
+  - @zag-js/popper@1.39.2
+
 ## 1.39.1
 
 ### Patch Changes
